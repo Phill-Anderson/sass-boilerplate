@@ -3,7 +3,9 @@
   cursor: pointer;
   display: inline-block;
   border: 0;
-  padding: $base-padding $base-padding * 2;
+  //padding: $base-padding $base-padding * 2;
+  @extend %py-sm;
+  @extend %px-xxl;
   border-radius: $base-border-radius;
   background-color: $bg-color;
 }

@@ -8,10 +8,12 @@
 
 .navbar {
   @extend %flex-layout;
-  padding: $base-padding $base-padding * 2;
+  //padding: $base-padding $base-padding * 2;
+  @extend %py-xs;
+  @extend %px-xxl;
   box-shadow: $base-box-shadow;
   .site-title {
-    font-size: $font-size-lg;
+    //font-size: $font-size-lg;
   }
   .container {
     @extend %flex-layout;
