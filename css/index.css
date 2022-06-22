@@ -19,6 +19,16 @@ h1 {
   font-size: clamp(2rem, 1.7554rem + 1.087vw, 2.625rem);
 }
 
+.pc-tab section div {
+  padding-left: clamp(0.625rem, 0.5027rem + 0.5435vw, 0.9375rem);
+  padding-right: clamp(0.625rem, 0.5027rem + 0.5435vw, 0.9375rem);
+}
+
+.pc-tab ul li label {
+  padding-left: clamp(1.25rem, 1.1277rem + 0.5435vw, 1.5625rem);
+  padding-right: clamp(1.25rem, 1.1277rem + 0.5435vw, 1.5625rem);
+}
+
 .navbar, .navbar-white, .navbar-black, .navbar-gray, .navbar-purple, .navbar-orange, .navbar-green, .navbar-yellow, .navbar-red, .navbar-blue, .navbar-info, .navbar-error, .navbar-secondary, .navbar-primary, .btn-complement-white, .btn-outlined-white, .btn-white, .btn-complement-black, .btn-outlined-black, .btn-black, .btn-complement-gray, .btn-outlined-gray, .btn-gray, .btn-complement-purple, .btn-outlined-purple, .btn-purple, .btn-complement-orange, .btn-outlined-orange, .btn-orange, .btn-complement-green, .btn-outlined-green, .btn-green, .btn-complement-yellow, .btn-outlined-yellow, .btn-yellow, .btn-complement-red, .btn-outlined-red, .btn-red, .btn-complement-blue, .btn-outlined-blue, .btn-blue, .btn-complement-info, .btn-outlined-info, .btn-info, .btn-complement-error, .btn-outlined-error, .btn-error, .btn-complement-secondary, .btn-outlined-secondary, .btn-secondary, .btn-complement-primary, .btn-outlined-primary, .btn-primary, .btn {
   padding-left: clamp(1.875rem, 1.7527rem + 0.5435vw, 2.1875rem);
   padding-right: clamp(1.875rem, 1.7527rem + 0.5435vw, 2.1875rem);
@@ -29,9 +39,14 @@ h1 {
   padding-bottom: clamp(0.3125rem, 0.1902rem + 0.5435vw, 0.625rem);
 }
 
-.btn-complement-white, .btn-outlined-white, .btn-white, .btn-complement-black, .btn-outlined-black, .btn-black, .btn-complement-gray, .btn-outlined-gray, .btn-gray, .btn-complement-purple, .btn-outlined-purple, .btn-purple, .btn-complement-orange, .btn-outlined-orange, .btn-orange, .btn-complement-green, .btn-outlined-green, .btn-green, .btn-complement-yellow, .btn-outlined-yellow, .btn-yellow, .btn-complement-red, .btn-outlined-red, .btn-red, .btn-complement-blue, .btn-outlined-blue, .btn-blue, .btn-complement-info, .btn-outlined-info, .btn-info, .btn-complement-error, .btn-outlined-error, .btn-error, .btn-complement-secondary, .btn-outlined-secondary, .btn-secondary, .btn-complement-primary, .btn-outlined-primary, .btn-primary, .btn {
+.pc-tab ul li label, .btn-complement-white, .btn-outlined-white, .btn-white, .btn-complement-black, .btn-outlined-black, .btn-black, .btn-complement-gray, .btn-outlined-gray, .btn-gray, .btn-complement-purple, .btn-outlined-purple, .btn-purple, .btn-complement-orange, .btn-outlined-orange, .btn-orange, .btn-complement-green, .btn-outlined-green, .btn-green, .btn-complement-yellow, .btn-outlined-yellow, .btn-yellow, .btn-complement-red, .btn-outlined-red, .btn-red, .btn-complement-blue, .btn-outlined-blue, .btn-blue, .btn-complement-info, .btn-outlined-info, .btn-info, .btn-complement-error, .btn-outlined-error, .btn-error, .btn-complement-secondary, .btn-outlined-secondary, .btn-secondary, .btn-complement-primary, .btn-outlined-primary, .btn-primary, .btn {
   padding-top: clamp(0.625rem, 0.5027rem + 0.5435vw, 0.9375rem);
   padding-bottom: clamp(0.625rem, 0.5027rem + 0.5435vw, 0.9375rem);
+}
+
+.pc-tab section div {
+  padding-top: clamp(0.9375rem, 0.8152rem + 0.5435vw, 1.25rem);
+  padding-bottom: clamp(0.9375rem, 0.8152rem + 0.5435vw, 1.25rem);
 }
 
 /* reset styles */
@@ -3747,14 +3762,100 @@ img {
   font-weight: normal;
 }
 
-.tab {
-  min-width: 320px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-.tab input {
+/* Component Needs */
+.pc-tab > input,
+.pc-tab section > div {
   display: none;
 }
+
+#tab1:checked ~ section .tab1,
+#tab2:checked ~ section .tab2,
+#tab3:checked ~ section .tab3 {
+  display: block;
+}
+
+#tab1:checked ~ nav .tab1,
+#tab2:checked ~ nav .tab2,
+#tab3:checked ~ nav .tab3 {
+  color: red;
+}
+
+/* Visual Styles */
+.pc-tab {
+  width: 100%;
+}
+.pc-tab ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pc-tab ul li label {
+  float: left;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+  background: #eeeeee;
+  color: #444;
+  cursor: pointer;
+}
+.pc-tab ul li label:hover {
+  background: #dddddd;
+}
+.pc-tab ul li label:active {
+  background: #ffffff;
+}
+.pc-tab ul li:not(:last-child) label {
+  border-right-width: 0;
+}
+.pc-tab section {
+  max-width: 100%;
+  clear: both;
+}
+.pc-tab section div {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  background: #fff;
+  line-height: 1.5em;
+  letter-spacing: 0.3px;
+  color: #444;
+}
+.pc-tab section div h2 {
+  margin: 0;
+  font-family: "Raleway";
+  letter-spacing: 1px;
+  color: #34495e;
+}
+
+#tab1:checked ~ nav .tab1 label,
+#tab2:checked ~ nav .tab2 label,
+#tab3:checked ~ nav .tab3 label {
+  background: white;
+  color: #111;
+  position: relative;
+}
+#tab1:checked ~ nav .tab1 label:after,
+#tab2:checked ~ nav .tab2 label:after,
+#tab3:checked ~ nav .tab3 label:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #ffffff;
+  left: 0;
+  bottom: -1px;
+}
+
+footer {
+  margin-top: 50px;
+  font-size: 14px;
+  color: #CCC;
+  text-align: center;
+}
+footer a {
+  color: #AAA;
+  text-decoration: none;
+}
+
 .p-0 {
   padding: 0;
 }
