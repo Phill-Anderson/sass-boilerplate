@@ -1,0 +1,16 @@
+@use "sass:math";
+@function light-comp($color) {
+  $complement: complement($color);
+  $light-complement: lighten($complement, 30%);
+  @return $light-complement;
+}
+
+@function sass_clamp($minValue, $minViewWidth, $maxViewWidth, $maxValue){
+  $minViewWidth: calc(#{$minViewWidth}/16);
+  $maxViewWidth: calc(#{$maxViewWidth}/16);
+  $slope: calc((#{$maxValue} - #{$minValue}) / (#{$maxViewWidth} - #{$minViewWidth}));
+  $yaxis: calc(#{$minValue} + (#{$minViewWidth}* #{$slope} * -1));
+
+  $preferredValue: clamp(1rem, calc((#{$yaxis}*1rem) + (#{$slope}*100)*1vw), 3.5rem);
+  @return $preferredValue;
+}
