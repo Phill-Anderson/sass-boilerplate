@@ -1,16 +1,30 @@
-const { src, dest, watch, series } = require('gulp')
-const sass = require('gulp-sass')(require('sass'))
-const purgecss = require('gulp-purgecss')
+const { src, dest, watch, series, parallel } = require("gulp");
+const minify = require("gulp-minify");
+var concat = require("gulp-concat");
+const sass = require("gulp-sass")(require("sass"));
+const purgecss = require("gulp-purgecss");
 
-function buildStyles() {
-  return src('sass_custom/**/*.scss')
-    .pipe(sass({ outputStyle: 'expanded' }))
-    // .pipe(purgecss({ content: ['*.html'] }))
-    .pipe(dest('css'))
+async function buildStyles() {
+  return (
+    src("src/sass_custom/**/*.scss")
+      .pipe(sass({ outputStyle: "expanded" }))
+      // .pipe(purgecss({ content: ['*.html'] }))
+      .pipe(dest("build/css"))
+  );
 }
+
+// async function buildJS() {
+//   return src("src/js/**/*.js")
+//     .pipe(concat("bundle.js"))
+//     .pipe(minify())
+//     .pipe(dest("build/js"));
+// }
 
 function watchTask() {
-  watch(['sass_library/**/*.scss', 'sass_custom/**/*.scss', '*.html'], buildStyles)
+  watch(
+    ["src/sass_library/**/*.scss", "src/sass_custom/**/*.scss", "*.html"],
+    buildStyles
+  );
 }
 
-exports.default = series(buildStyles, watchTask)
+exports.default = series(buildStyles, watchTask);
